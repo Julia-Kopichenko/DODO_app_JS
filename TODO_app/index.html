@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./CSS/normalize.css">
+		<link rel="stylesheet" href="./CSS/style.css">
+		<title>TODO list</title>
+	</head>
+
+	<body>
+		<div class="content-wrapper">
+			<header id = "myHEADER">
+				<div class="header-wrapper">
+					<div class="logo"></div>
+					<input type="text" id ="searchInput" class="search-input" placeholder="Search task for to do">
+				</div>
+			</header>
+		
+			<main id = "myNAME" class="main ">
+					<div class="main-wrapper">
+						<ul class="tab-list">
+							<li id="all" class="line--active">
+								<a class="tab tab--active" href="#">All</a>
+							</li>
+							<li id="active">
+								<a class="tab" href="#">Active</a>
+							</li>
+							<li id="done">
+								<a class="tab" href="#">Done</a>
+							</li>
+						</ul>
+
+						<section class="add-wrapper">
+							<p class="add-label">New Task</p>
+							<input type="text" class="add-input" id="addInput">
+							<!-- <div class="add-button-wrapper"> -->
+								<button class="add-button">ADD</button>
+							<!-- </div> -->
+						</section>
+
+					</div>
+				</main>
+		</div>
+		<!-- <script src="./JS/script.js/"></script> -->
+	</body>
+</html>
