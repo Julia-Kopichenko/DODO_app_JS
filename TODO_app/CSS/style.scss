@@ -53,6 +53,7 @@ html {
 	box-sizing: border-box; 
 }
 
+	
 body {
 	font-family: 'Roboto', Arial, sans-serif;
 	font-size: 16px;
@@ -154,38 +155,38 @@ body {
 	}
 }
 .tab {
-	// display: inline-block;
 	padding: 5px;
 	text-align: center;
 	width: 175px;
 	height: 30px;
+	font-weight: 900;
 	color: #53565A;
 	opacity: 0.5;
 	border: 0; 
 	cursor: pointer; 
 	outline: none;
 	background-color: #FFFFFF;
-}
-.tab--active {
+	&--active {
 	opacity: 1;
+	}
+	&:focus {
+		outline: none;
+		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
+    border: 1px solid rgba(47, 128, 237, 0.75);
+	}
 }
+// дописать на фокус стиль
+
 .line--active {
 	border-top: 4px solid #2F80ED;
 }
 
-
-
-.main {
-	
-}
 .main-wrapper {
 	max-width: 763px;
 	min-width: 320px;
 	margin-left: 24px;
 	margin-right: 20px;
 }
-
-
 
 .add-wrapper {
 	.add-label {
@@ -213,8 +214,12 @@ body {
 	border: 1px solid #DDDBDA;
 	border-radius: 4px;
 	outline: none;
-
 	&:hover {
+		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
+    border: 1px solid rgba(47, 128, 237, 0.75);
+	}
+	&:focus {
+		outline: none;
 		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
     border: 1px solid rgba(47, 128, 237, 0.75);
 	}
@@ -235,12 +240,11 @@ body {
 	&:hover {
 		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
 	}
-}
-
-
-.tasks-wrapper {
-// height: 630px;
-// overflow: scroll; /* Добавляем полосы прокрутки */
+	&:focus {
+		outline: none;
+		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
+    border: 1px solid rgba(47, 128, 237, 0.75);
+	}
 }
 .todo-list {
 	margin: 0;
@@ -249,8 +253,31 @@ body {
 		margin-bottom: 17px;
 	}
 }
+
+.todo-list--all .todo-item {
+	display: block;
+}
+
+.todo-list--active .todo-item {	
+	&:not(.todo-task--done) {
+		display: block;
+	}
+	&.todo-task--done {
+		display: none;
+	}
+}
+
+.todo-list--done .todo-item {
+	&.todo-task--done {
+		display: block;
+	}
+	&:not(.todo-task--done) {
+		display: none;
+	}
+}
+
 .todo-item {
-	cursor: pointer; /*уточнить*/
+	cursor: pointer; 
 	position: relative;
 	padding: 16px 12px 13px 23px; 
 	width: 100%;
@@ -264,10 +291,26 @@ body {
 		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
     border: 1px solid rgba(47, 128, 237, 0.75);
 	}
+	&:focus {
+		outline: none;
+		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
+    border: 1px solid rgba(47, 128, 237, 0.75);
+	}
 	&:hover .important-button,
 	&:hover .bin-button {
 		display: block;
+		visibility: visible;
 	}
+	&:focus .important-button,
+	&:focus .bin-button {
+		display: block;
+	}
+	// &:focus-visible .important-button,
+	// &:focus-visible .bin-button {
+	// 	visibility: visible;
+	// }
+
+
 	& .important-button {
 		position: absolute;
 		right: 73px;
@@ -284,18 +327,18 @@ body {
 		top: 11px;
 		right: 12px;
 	}
-	&.todo-task--done p{
+	&.todo-task--done p {
 		text-decoration-line: line-through;
 	}
 }
 .todo-task {
-	display: inline-block;
-	width: 455px;
+	display: inline-block; // в одну линию со звездой
+	max-width: 455px;
 }
 .todo-task--important {
 	font-weight: bold;
 	&:before {
-    content: url(../images/star_border.svg);
+    content: url(../images/star_border.svg); // звезда
 		margin-right: 10px;
 	}
 }
@@ -312,6 +355,10 @@ body {
 	color: #FFFFFF;
 	box-shadow: 0 2px 6px 0 rgb(0 0 0 / 40%);
 	display: none;
+	// visibility: hidden;	
+	&:focus {
+		outline: none;
+	}
 }
 
 .important-button--not-active {
@@ -326,26 +373,13 @@ body {
 	width: 40px;
 	height: 40px;
 	display: none;
-}
-
-.tasks-wrapper--all .todo-item {
-	display: block;
-}
-
-.tasks-wrapper--active .todo-item {	
-	&:not(.todo-task--done) {
-		display: block;
-	}
-	&.todo-task--done {
-		display: none;
+	// visibility: hidden;	
+	&:focus {
+		outline: none;
 	}
 }
 
-.tasks-wrapper--done .todo-item {
-	&.todo-task--done {
-		display: block;
-	}
-	&:not(.todo-task--done) {
-		display: none;
-	}
-}
+
+// :focus {	
+// 	background-color: red;
+// }
