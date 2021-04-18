@@ -10,39 +10,53 @@
 	</head>
 
 	<body>
+		<h1 class="visually-hidden">Список дел</h1>
 		<div class="content-wrapper">
 			<header id = "myHEADER">
 				<div class="header-wrapper">
-					<div class="logo"></div>
-					<input type="text" id ="searchInput" class="search-input" placeholder="Search task for to do">
+					<div class="search-wrapper">
+						<div class="logo"></div>
+						<input type="text" id ="searchInput" class="search-input" placeholder="Search task for to do">
+					</div>
+					
+					<nav>
+						<ul class="tab-list">
+							<li id="all" class="line--active">
+								<button class="tab tab--active">All</button>
+							</li>
+							<li id="active">
+								<button class="tab">Active</button>
+							</li>
+							<li id="done">
+								<button class="tab">Done</button>
+							</li>
+						</ul>
+					</nav>
+					
 				</div>
+				
 			</header>
 		
 			<main id = "myNAME" class="main ">
 					<div class="main-wrapper">
-						<ul class="tab-list">
-							<li id="all" class="line--active">
-								<a class="tab tab--active" href="#">All</a>
-							</li>
-							<li id="active">
-								<a class="tab" href="#">Active</a>
-							</li>
-							<li id="done">
-								<a class="tab" href="#">Done</a>
-							</li>
-						</ul>
-
 						<section class="add-wrapper">
 							<p class="add-label">New Task</p>
-							<input type="text" class="add-input" id="addInput">
-							<!-- <div class="add-button-wrapper"> -->
-								<button class="add-button">ADD</button>
-							<!-- </div> -->
+							<textarea class="add-input" id="myAddInput"></textarea>
+							<button class="add-button">ADD</button>
 						</section>
 
+						<section class="tasks-wrapper">
+							<ul id="myUl" class="todo-list">
+								<!-- <li class="todo-item">
+									<p class="todo-task">Some text</p>
+									<div class="important-button">NOT IMPORTANT</div>
+									<div class="bin-button"></div>
+								</li>  -->
+							</ul>
+						</section>
 					</div>
 				</main>
 		</div>
-		<!-- <script src="./JS/script.js/"></script> -->
+		<script src="./JS/script.js"></script>
 	</body>
 </html>
