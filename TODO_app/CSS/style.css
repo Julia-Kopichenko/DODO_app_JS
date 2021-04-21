@@ -34,6 +34,10 @@
   src: url("../fonts/SalesforceSans-Regular.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500.woff") format("woff");
 }
 /* Подключение box-sizing border-box для правильного расчета разметки */
+html {
+  box-sizing: border-box;
+}
+
 /*наследует значения родителя*/
 /*заставляем box-sizing наследоваться, так как по умолчанию before, after не наследуется*/
 *,
@@ -47,10 +51,6 @@ input, textarea, select {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
-}
-
-html {
-  box-sizing: border-box;
 }
 
 body {
@@ -82,22 +82,25 @@ body header {
   max-width: 1440px;
   min-width: 320px;
   min-height: 1024px;
-  background: url(../images/main_background.png) no-repeat right 6px top 218px;
   padding: 20px;
   margin: 0 auto;
+  background: url(../images/main_background.png) no-repeat right 6px top 218px;
 }
 
-.header-wrapper {
+.header {
   max-width: 784px;
   min-width: 280px;
 }
-.header-wrapper nav {
+.header nav {
   border-top: 1px solid #E2E2E2;
   margin-left: 26px;
   margin-bottom: 12px;
 }
-.header-wrapper .search-wrapper {
+.header .search-wrapper {
   margin-bottom: 31px;
+}
+.header form {
+  flex: 1;
 }
 
 .search-wrapper {
@@ -116,7 +119,7 @@ body header {
 }
 
 .search-input {
-  flex: 1;
+  width: 100%;
   height: 40px;
   padding: 9px 10px 10px 40px;
   background: url(../images/Search.svg) no-repeat #F6F6F6;
@@ -125,14 +128,22 @@ body header {
   border-radius: 4px;
   box-sizing: border-box;
   box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #53565A;
 }
 .search-input::placeholder {
   opacity: 0.3;
 }
-.search-input:focus {
-  outline: none;
+.search-input:hover {
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
   border: 1px solid rgba(47, 128, 237, 0.75);
+  transition: box-shadow 0.45s 0.05s ease-in-out;
+}
+.search-input:focus-visible {
+  outline: 1px solid rgba(47, 128, 237, 0.5);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
 
 .tab-list {
@@ -146,6 +157,13 @@ body header {
 .tab-list li {
   width: 175px;
   text-align: center;
+  outline: none;
+  cursor: pointer;
+}
+.tab-list li:focus-visible {
+  background-color: rgba(47, 128, 237, 0.1);
+  outline: 1px solid rgba(47, 128, 237, 0.5);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
 
 .tab {
@@ -157,31 +175,30 @@ body header {
   color: #53565A;
   opacity: 0.5;
   border: 0;
-  cursor: pointer;
   text-decoration: none;
   outline: none;
   background-color: #FFFFFF;
 }
+.tab:hover {
+  color: rgba(83, 86, 90, 0.7);
+}
 .tab--active {
   opacity: 1;
-}
-.tab:focus-visible {
-  outline: none;
-  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
-  border: 1px solid rgba(47, 128, 237, 0.75);
 }
 
 .line--active {
   border-top: 4px solid #2F80ED;
 }
 
-.main-wrapper {
+.main {
   max-width: 763px;
   min-width: 280px;
-  margin-left: 24px;
-  margin-right: 20px;
+  margin: 0 24px 0;
 }
 
+.add-wrapper {
+  min-height: 37px;
+}
 .add-wrapper .add-label {
   margin-bottom: 4px;
 }
@@ -203,20 +220,26 @@ body header {
 .add-input {
   width: 100%;
   height: 90px;
-  padding: 5px;
+  padding: 16px 12px 13px 23px;
   box-sizing: border-box;
   border: 1px solid #DDDBDA;
   border-radius: 4px;
   outline: none;
+  overflow: auto;
+  vertical-align: top;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #53565A;
 }
 .add-input:hover {
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
   border: 1px solid rgba(47, 128, 237, 0.75);
+  transition: box-shadow 0.45s 0.05s ease-in-out;
 }
-.add-input:focus {
-  outline: none;
-  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+.add-input:focus-visible {
   border: 1px solid rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
 
 .add-button {
@@ -235,10 +258,8 @@ body header {
 .add-button:hover {
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
-.add-button:focus {
-  outline: none;
-  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
-  border: 2px solid rgba(47, 128, 237, 0.75);
+.add-button:focus-visible {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
 .todo-list {
@@ -259,6 +280,10 @@ body header {
 }
 .todo-list--active .todo-item.todo-task--done {
   display: none;
+}
+
+.todo-list--done {
+  padding-top: 37px;
 }
 
 .todo-list--done .todo-item.todo-task--done {
@@ -283,6 +308,7 @@ body header {
   border-radius: 4px;
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
   border: 1px solid rgba(47, 128, 237, 0.75);
+  transition: box-shadow 0.45s 0.05s ease-in-out;
 }
 .todo-item:focus {
   outline: none;
@@ -314,6 +340,9 @@ body header {
 .todo-item.todo-task--done p {
   text-decoration-line: line-through;
 }
+.todo-item.todo-task--done .important-button {
+  display: none;
+}
 
 .todo-task {
   display: inline-block;
@@ -343,13 +372,13 @@ body header {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
   display: none;
   cursor: pointer;
+  outline: none;
 }
 .important-button:hover {
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
-.important-button:focus {
-  outline: none;
-  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+.important-button:focus-visible {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
 .important-button--not-active {
@@ -364,18 +393,29 @@ body header {
   width: 40px;
   height: 40px;
   border: 0;
+  border-radius: 50%;
   display: none;
   cursor: pointer;
+  outline: none;
 }
 .bin-button:hover {
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
-.bin-button:focus {
-  outline: none;
-  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+.bin-button:focus-visible {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
+  .todo-item .important-button {
+    top: auto;
+    bottom: 11px;
+  }
+  .todo-item .bin-button {
+    top: auto;
+    bottom: 11px;
+  }
+}
+@media screen and (max-width: 500px) {
   .content-wrapper {
     background-size: 100%;
   }
@@ -387,17 +427,11 @@ body header {
     margin-right: 0;
     margin-bottom: 20px;
   }
-
-  .search-input {
+  .search-wrapper form {
     width: 100%;
   }
 
-  .main-wrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .header-wrapper .tab-list {
+  .header .tab-list {
     margin-left: 0;
   }
 

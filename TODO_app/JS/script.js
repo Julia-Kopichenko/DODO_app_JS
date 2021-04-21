@@ -2,7 +2,7 @@ const addInput = document.querySelector('.add-input'); // поле ввода н
 const addButton = document.querySelector('.add-button'); // кнопка ADD
 const addWrapper = document.querySelector('.add-wrapper'); // секция с полем ввода и кнокпой ввода
 let todo = document.querySelector('.todo-list'); //список дел (ul)
-let searchInput = document.querySelector('.search-input'); // поле поиска
+const searchInput = document.querySelector('.search-input'); // поле поиска
 
 // создадим пустой массив, в который будем записывать кждое новое дело (newTodo)
 let todoList = [];
@@ -226,8 +226,11 @@ let todoItems = document.querySelectorAll('.todo-item');
 }
 
 searchInput.addEventListener('keydown', function (event) {
-	if (event.keyCode == 13 && !event.shiftKey) { // исключаем срабатывае=ние Enter при нажатом shift
+	if (event.keyCode == 13 && !event.shiftKey) { 
 		searchTasks();
 		event.preventDefault();
 	}
 });
+// чтобы сразу фильтровало
+searchInput.addEventListener("input", searchTasks);
+

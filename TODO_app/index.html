@@ -12,41 +12,42 @@
 	<body>
 		<h1 class="visually-hidden">Список дел</h1>
 		<div class="content-wrapper">
-			<header>
-				<div class="header-wrapper">
-					<div class="search-wrapper">
-						<div class="logo"></div>
+			<header class="header">
+				<div class="search-wrapper">
+					<div class="logo"></div>
+					<form>
 						<input type="search" class="search-input" placeholder="Search task for to do" tabindex="0">
-					</div>
-					
+					</form>
+				</div>
+				<nav>
 					<ul class="tab-list">
-						<li id="all" class="line--active">
-							<a class="tab tab--active" tabindex="0" href="#">All</a>
+						<li id="all" class="line--active" tabindex="0">
+							<a class="tab tab--active" tabindex="-1" href="#">All</a>
 						</li>
-						<li id="active" >
-							<a class="tab" tabindex="0" href="#">Active</a>
+						<li id="active" tabindex="0">
+							<a class="tab" tabindex="-1" href="#">Active</a>
 						</li>
-						<li id="done">
-							<a class="tab" tabindex="0" href="#">Done</a>
+						<li id="done" tabindex="0">
+							<a class="tab" tabindex="-1" href="#">Done</a>
 						</li>
 					</ul>	
-				</div>			
+				</nav>
 			</header>
-			<main>
-				<div class="main-wrapper">
-					<section class="add-wrapper">
-						<h2 class="visually-hidden">Введите новую задачу</h2>
-						<p class="add-label">New Task</p>
-						<textarea class="add-input"></textarea>
+			<main class="main">
+				<section class="add-wrapper">
+					<h2 class="visually-hidden">Введите новую задачу</h2>
+					<form>
+						<label class="add-label">New Task</label>
+						<textarea class="add-input" maxlength="300" title="Maximum 300 simbols"></textarea>
 						<button class="add-button">ADD</button>
-					</section>
-					<section>
-						<h3 class="visually-hidden">Список ваших задач</h3>
-						<ul class="todo-list">
-							<!-- наполняем списком через js -->
-						</ul>
-					</section>
-				</div>
+					</form>
+				</section>
+				<section>
+					<h3 class="visually-hidden">Список ваших задач</h3>
+					<ul class="todo-list">
+						<!-- наполняем списком через js -->
+					</ul>
+				</section>
 			</main>
 		</div>
 		<script src="./JS/script.js"></script>
