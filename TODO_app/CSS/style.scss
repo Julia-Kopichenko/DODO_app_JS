@@ -53,7 +53,6 @@ html {
 	box-sizing: border-box; 
 }
 
-	
 body {
 	font-family: 'Roboto', Arial, sans-serif;
 	font-size: 16px;
@@ -79,22 +78,16 @@ body {
 .content-wrapper {
 	display: block;
 	max-width: 1440px;
-	min-width: 250px;
+	min-width: 320px;
 	min-height: 1024px;
-	
-	// height: 1024px;
 	background: url(../images/main_background.png) no-repeat right 6px top 218px;
-	// padding-top: 20px;
-	// padding-left: 20px;
 	padding: 20px;
 	margin: 0 auto;
 }
 
-
 .header-wrapper {
 	max-width: 784px;
-	min-width: 320px;
-	margin-right: 20px;
+	min-width: 280px;
 	& nav {
 		border-top: 1px solid #E2E2E2;
 		margin-left: 26px;
@@ -112,15 +105,7 @@ body {
 		margin-right: 20px;
 	}
 }
-@media screen and (max-width: 767px) {
-	// body {
-	// 	font-size: 14px;
-	// 	line-height: 20px; 
-	// }
-	// .container {
-  //       max-width: 300px; 
-	// }
-}
+
 .logo {
 	background-image: url(../images/logo.svg);
 	width: 174px;
@@ -144,6 +129,7 @@ body {
 		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
     border: 1px solid rgba(47, 128, 237, 0.75);
 	}
+	
 }
 
 .tab-list {
@@ -151,31 +137,35 @@ body {
 	display: flex;
 	justify-content: space-between;
 	& .tab {
-		margin-top: 18px;
+		margin-top: 18px;	
 	}
-}
+	& li {
+	width: 175px;
+	text-align: center;
+	}
+}	
 .tab {
+	display: block;
 	padding: 5px;
 	text-align: center;
-	width: 175px;
 	height: 30px;
 	font-weight: 900;
 	color: #53565A;
 	opacity: 0.5;
 	border: 0; 
 	cursor: pointer; 
+	text-decoration: none;
 	outline: none;
 	background-color: #FFFFFF;
 	&--active {
 	opacity: 1;
 	}
-	&:focus {
+	&:focus-visible {
 		outline: none;
 		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
     border: 1px solid rgba(47, 128, 237, 0.75);
 	}
 }
-// дописать на фокус стиль
 
 .line--active {
 	border-top: 4px solid #2F80ED;
@@ -183,11 +173,10 @@ body {
 
 .main-wrapper {
 	max-width: 763px;
-	min-width: 320px;
+	min-width: 280px;
 	margin-left: 24px;
 	margin-right: 20px;
 }
-
 .add-wrapper {
 	.add-label {
 		margin-bottom: 4px; 
@@ -234,7 +223,6 @@ body {
 	box-shadow: 0 2px 6px 0 rgb(0 0 0 / 50%);
 	display: block;
 	border: 0; 
-	text-align: center;
 	cursor: pointer; 
 	outline: none;
 	&:hover {
@@ -243,21 +231,19 @@ body {
 	&:focus {
 		outline: none;
 		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
-    border: 1px solid rgba(47, 128, 237, 0.75);
+    border: 2px solid rgba(47, 128, 237, 0.75);
 	}
 }
-.todo-list {
-	margin: 0;
-	padding: 0;
-	& li {
+.todo-list {    /*ul - список задач*/
+	& .todo-item {
 		margin-bottom: 17px;
 	}
 }
-
+/*на вкладке ALL все задачи (todo-item) отображаются*/
 .todo-list--all .todo-item {
 	display: block;
 }
-
+/*на вкладке active отображаются все задачи (todo-item), кроме тех, у кого класс todo-task--done */
 .todo-list--active .todo-item {	
 	&:not(.todo-task--done) {
 		display: block;
@@ -275,7 +261,7 @@ body {
 		display: none;
 	}
 }
-
+//li
 .todo-item {
 	cursor: pointer; 
 	position: relative;
@@ -299,18 +285,11 @@ body {
 	&:hover .important-button,
 	&:hover .bin-button {
 		display: block;
-		visibility: visible;
 	}
-	&:focus .important-button,
-	&:focus .bin-button {
+	&:focus-within .important-button,
+	&:focus-within .bin-button {
 		display: block;
 	}
-	// &:focus-visible .important-button,
-	// &:focus-visible .bin-button {
-	// 	visibility: visible;
-	// }
-
-
 	& .important-button {
 		position: absolute;
 		right: 73px;
@@ -346,6 +325,7 @@ body {
 	width: 183px;
 	height: 36px;
 	padding: 10px 16px;
+	border: 0; 
 	font-weight: 500px;
 	text-align: center;
 	border-radius: 20px;
@@ -355,9 +335,14 @@ body {
 	color: #FFFFFF;
 	box-shadow: 0 2px 6px 0 rgb(0 0 0 / 40%);
 	display: none;
-	// visibility: hidden;	
+	cursor: pointer; 
+	&:hover {
+		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
+	}
+
 	&:focus {
 		outline: none;
+		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
 	}
 }
 
@@ -372,14 +357,45 @@ body {
 	background: url(../images/Delete.svg) no-repeat;
 	width: 40px;
 	height: 40px;
+	border: 0; 
 	display: none;
-	// visibility: hidden;	
+	cursor: pointer; 
+	&:hover {
+		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
+	}
 	&:focus {
 		outline: none;
+		box-shadow: 0px 6px 20px rgb(47 128 237 / 75%);
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.content-wrapper {
+		background-size: 100%;
+	}
+	.search-wrapper {
+		flex-direction: column;
+		& .logo {
+			margin-right: 0;
+			margin-bottom: 20px;
+		}
+	}
+	.search-input {
+		width: 100%;
+	}
+	.main-wrapper {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.header-wrapper {
+		& .tab-list {
+			margin-left: 0;
+		}
+	}
+	.tab-list {
+		width: 100%;
+		margin: 0 auto;
 	}
 }
 
 
-// :focus {	
-// 	background-color: red;
-// }

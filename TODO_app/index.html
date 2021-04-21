@@ -16,36 +16,34 @@
 				<div class="header-wrapper">
 					<div class="search-wrapper">
 						<div class="logo"></div>
-						<input type="text" class="search-input" placeholder="Search task for to do" tabindex="0">
+						<input type="search" class="search-input" placeholder="Search task for to do" tabindex="0">
 					</div>
 					
-					<nav>
-						<ul class="tab-list">
-							<li id="all" class="line--active">
-								<button class="tab tab--active" tabindex="0">All</button>
-							</li>
-							<li id="active">
-								<button class="tab" tabindex="0">Active</button>
-							</li>
-							<li id="done">
-								<button class="tab" tabindex="0">Done</button>
-							</li>
-						</ul>	
-					</nav>
+					<ul class="tab-list">
+						<li id="all" class="line--active">
+							<a class="tab tab--active" tabindex="0" href="#">All</a>
+						</li>
+						<li id="active" >
+							<a class="tab" tabindex="0" href="#">Active</a>
+						</li>
+						<li id="done">
+							<a class="tab" tabindex="0" href="#">Done</a>
+						</li>
+					</ul>	
 				</div>			
 			</header>
-		
 			<main>
 				<div class="main-wrapper">
 					<section class="add-wrapper">
+						<h2 class="visually-hidden">Введите новую задачу</h2>
 						<p class="add-label">New Task</p>
 						<textarea class="add-input"></textarea>
 						<button class="add-button">ADD</button>
 					</section>
-
 					<section>
+						<h3 class="visually-hidden">Список ваших задач</h3>
 						<ul class="todo-list">
-							<!-- наполняеи списком через js -->
+							<!-- наполняем списком через js -->
 						</ul>
 					</section>
 				</div>

@@ -80,7 +80,7 @@ body header {
 .content-wrapper {
   display: block;
   max-width: 1440px;
-  min-width: 250px;
+  min-width: 320px;
   min-height: 1024px;
   background: url(../images/main_background.png) no-repeat right 6px top 218px;
   padding: 20px;
@@ -89,8 +89,7 @@ body header {
 
 .header-wrapper {
   max-width: 784px;
-  min-width: 320px;
-  margin-right: 20px;
+  min-width: 280px;
 }
 .header-wrapper nav {
   border-top: 1px solid #E2E2E2;
@@ -144,24 +143,29 @@ body header {
 .tab-list .tab {
   margin-top: 18px;
 }
+.tab-list li {
+  width: 175px;
+  text-align: center;
+}
 
 .tab {
+  display: block;
   padding: 5px;
   text-align: center;
-  width: 175px;
   height: 30px;
   font-weight: 900;
   color: #53565A;
   opacity: 0.5;
   border: 0;
   cursor: pointer;
+  text-decoration: none;
   outline: none;
   background-color: #FFFFFF;
 }
 .tab--active {
   opacity: 1;
 }
-.tab:focus {
+.tab:focus-visible {
   outline: none;
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
   border: 1px solid rgba(47, 128, 237, 0.75);
@@ -173,7 +177,7 @@ body header {
 
 .main-wrapper {
   max-width: 763px;
-  min-width: 320px;
+  min-width: 280px;
   margin-left: 24px;
   margin-right: 20px;
 }
@@ -225,7 +229,6 @@ body header {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
   display: block;
   border: 0;
-  text-align: center;
   cursor: pointer;
   outline: none;
 }
@@ -235,21 +238,22 @@ body header {
 .add-button:focus {
   outline: none;
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
-  border: 1px solid rgba(47, 128, 237, 0.75);
+  border: 2px solid rgba(47, 128, 237, 0.75);
 }
 
 .todo-list {
-  margin: 0;
-  padding: 0;
+  /*ul - список задач*/
 }
-.todo-list li {
+.todo-list .todo-item {
   margin-bottom: 17px;
 }
 
+/*на вкладке ALL все задачи (todo-item) отображаются*/
 .todo-list--all .todo-item {
   display: block;
 }
 
+/*на вкладке active отображаются все задачи (todo-item), кроме тех, у кого класс todo-task--done */
 .todo-list--active .todo-item:not(.todo-task--done) {
   display: block;
 }
@@ -287,9 +291,8 @@ body header {
 }
 .todo-item:hover .important-button, .todo-item:hover .bin-button {
   display: block;
-  visibility: visible;
 }
-.todo-item:focus .important-button, .todo-item:focus .bin-button {
+.todo-item:focus-within .important-button, .todo-item:focus-within .bin-button {
   display: block;
 }
 .todo-item .important-button {
@@ -329,6 +332,7 @@ body header {
   width: 183px;
   height: 36px;
   padding: 10px 16px;
+  border: 0;
   font-weight: 500px;
   text-align: center;
   border-radius: 20px;
@@ -338,9 +342,14 @@ body header {
   color: #FFFFFF;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
   display: none;
+  cursor: pointer;
+}
+.important-button:hover {
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
 .important-button:focus {
   outline: none;
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
 
 .important-button--not-active {
@@ -354,10 +363,48 @@ body header {
   background: url(../images/Delete.svg) no-repeat;
   width: 40px;
   height: 40px;
+  border: 0;
   display: none;
+  cursor: pointer;
+}
+.bin-button:hover {
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
 .bin-button:focus {
   outline: none;
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+}
+
+@media screen and (max-width: 767px) {
+  .content-wrapper {
+    background-size: 100%;
+  }
+
+  .search-wrapper {
+    flex-direction: column;
+  }
+  .search-wrapper .logo {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .main-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .header-wrapper .tab-list {
+    margin-left: 0;
+  }
+
+  .tab-list {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
