@@ -296,7 +296,8 @@ body header {
 
 .todo-list li.todo-item {
   cursor: pointer;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
   padding: 16px 12px 13px 23px;
   width: 100%;
   min-height: 109px;
@@ -319,21 +320,14 @@ body header {
 .todo-list li.todo-item:focus-within .important-button, .todo-list li.todo-item:focus-within .bin-button {
   display: block;
 }
-.todo-list li.todo-item .important-button {
-  position: absolute;
-  right: 73px;
-  top: 11px;
+.todo-list li.todo-item .button-wrapper {
+  margin-left: 21px;
 }
 .todo-list li.todo-item.todo-task--important .important-button {
   background: #bdbdbd;
 }
 .todo-list li.todo-item.todo-task--important .important-button:before {
   content: "NOT IMPORTANT";
-}
-.todo-list li.todo-item .bin-button {
-  position: absolute;
-  top: 11px;
-  right: 12px;
 }
 .todo-list li.todo-item.todo-task--done p {
   text-decoration-line: line-through;
@@ -356,8 +350,9 @@ body header {
 }
 
 .todo-task {
+  flex-grow: 1;
   display: inline-block;
-  max-width: 455px;
+  max-width: 100%;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -365,9 +360,18 @@ body header {
 .todo-task--important {
   font-weight: bold;
 }
-.todo-task--important:before {
+.todo-task--important .todo-task:before {
   content: url(../images/star_border.svg);
   margin-right: 10px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 244px;
+}
+.button-wrapper .important-button {
+  margin-right: 21px;
 }
 
 .important-button {
@@ -425,17 +429,20 @@ body header {
     background-size: 100%;
   }
 
-  .header nav {
-    margin-left: 0;
+  .todo-list li.todo-item .button-wrapper {
+    align-self: flex-end;
   }
 
-  .todo-item .important-button {
-    top: auto;
-    bottom: 11px;
+  .todo-item {
+    flex-direction: column;
   }
-  .todo-item .bin-button {
-    top: auto;
-    bottom: 11px;
+
+  .todo-task {
+    margin-bottom: 5px;
+  }
+
+  .header nav {
+    margin-left: 0;
   }
 }
 @media screen and (max-width: 500px) {

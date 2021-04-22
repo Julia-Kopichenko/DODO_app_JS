@@ -282,7 +282,8 @@ body {
 //li
 .todo-list li.todo-item {
 	cursor: pointer; 
-	position: relative;
+	display: flex;
+	justify-content: space-between;
 	padding: 16px 12px 13px 23px; 
 	width: 100%;
 	min-height: 109px;
@@ -305,21 +306,14 @@ body {
 	&:focus-within .bin-button {
 		display: block;
 	}
-	& .important-button {
-		position: absolute;
-		right: 73px;
-		top: 11px;
+	& .button-wrapper {
+		margin-left: 21px;
 	}
 	&.todo-task--important .important-button{
 		background: #bdbdbd;
 		&:before {
 			content: 'NOT IMPORTANT';
 		}
-	}
-	& .bin-button {
-		position: absolute;
-		top: 11px;
-		right: 12px;
 	}
 	&.todo-task--done p {
 		text-decoration-line: line-through;
@@ -346,16 +340,25 @@ body {
 }
 
 .todo-task {
+	flex-grow: 1;
 	display: inline-block; // в одну линию со звездой
-	max-width: 455px;
+	max-width: 100%;
 	white-space: pre-wrap; // разрешаем перенос строк
 	word-wrap: break-word; // указывает, переносить или нет длинные слова, которые не помещаются по ширине в заданную область
 }
 .todo-task--important {
 	font-weight: bold;
-	&:before {
+	& .todo-task:before {
     content: url(../images/star_border.svg); // звезда
 		margin-right: 10px;
+	}
+}
+.button-wrapper {
+	display: flex;
+	justify-content: flex-end;
+	width: 244px;
+	& .important-button {
+		margin-right: 21px;
 	}
 }
 .important-button {
@@ -371,7 +374,6 @@ body {
 	letter-spacing: 0.75px;
 	color: #FFFFFF;
 	box-shadow: 0 2px 6px 0 rgb(0 0 0 / 40%);
-	// display: none;
 	cursor: pointer; 
 	outline: none;
 	&:hover {
@@ -394,7 +396,6 @@ body {
 	height: 40px;
 	border: 0; 
 	border-radius: 50%;
-	// display: none;
 	cursor: pointer; 
 	outline: none;
 	&:hover {
@@ -404,6 +405,7 @@ body {
 		box-shadow: 0px 2px 6px rgb(0 0 0 / 75%);
 	}
 }
+
 @media screen and (max-width: 768px) {
 	.main {
 		margin: 0;
@@ -411,19 +413,18 @@ body {
 	.content-wrapper {
 		background-size: 100%;
 	}
+	.todo-list li.todo-item .button-wrapper {
+		align-self: flex-end;
+	}
+	.todo-item {
+		flex-direction: column;
+	}
+	.todo-task {
+		margin-bottom: 5px;
+	}
 	.header {
 		& nav {
 			margin-left: 0;
-		}
-	}
-	.todo-item {
-		& .important-button {
-			top: auto;
-			bottom: 11px;
-		}
-		& .bin-button  {
-			top: auto;
-			bottom: 11px;
 		}
 	}
 }

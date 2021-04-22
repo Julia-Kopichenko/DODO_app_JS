@@ -68,9 +68,11 @@ function displayTasks() {
 	todoList.forEach(function (item, index) {
 		displayTask += `
     <li tabindex="0" class="todo-item ${item.done ? 'todo-task--done' : ''} ${item.important ? 'todo-task--important' : ''}" id="${index}">
-      <p class="todo-task">${item.todo}</p>  
-      <button class="important-button important-button--not-active" tabindex="0"></button>
-      <button class="bin-button" tabindex="0"></button>
+      <p class="todo-task">${item.todo}</p>
+			<div class = "button-wrapper">
+				<button class="important-button important-button--not-active" tabindex="0"></button>
+				<button class="bin-button" tabindex="0"></button>
+			</div>
     </li>
     `;
 		//  меняем содержимое HTML страницы
@@ -140,8 +142,9 @@ function makeTaskDoneByEnter(item) {
 
 //! функция преобразования задачи в важную или нет
 function makeImportantTask(item) {
-  item.querySelector('.important-button').addEventListener('click', function(event) {
-    let parentElement = event.target.parentElement;
+	item.querySelector('.important-button').addEventListener('click', function (event) {
+
+    let parentElement = event.target.parentElement.parentElement;
     parentElement.classList.toggle('todo-task--important');
     todoList[parentElement.getAttribute('id')].important = !todoList[parentElement.getAttribute('id')].important;
     updateLocalStorage();
@@ -150,7 +153,7 @@ function makeImportantTask(item) {
 //! функция для удаления задачи 
 function deleteTask(item) {
   item.querySelector('.bin-button').addEventListener('click', function(event) {
-		let parentElement = event.target.parentElement;
+		let parentElement = event.target.parentElement.parentElement;
 		let itemIndex = parentElement.getAttribute('id');
 		parentElement.remove();
 		for (let i = +itemIndex + 1; i < todoList.length; i++) {
@@ -242,5 +245,6 @@ function checkTouch() {
 	if (!(navigator.maxTouchPoints > 0) && !(navigator.msMaxTouchPoints > 0)) {
 		document.body.classList.add('can-hover');
 	}
+	updateLocalStorage();
 }
 checkTouch();
