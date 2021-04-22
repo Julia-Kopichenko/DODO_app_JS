@@ -110,12 +110,13 @@ body header {
 }
 .search-wrapper .logo {
   margin-right: 20px;
+  width: 174px;
+  height: 44px;
 }
 
 .logo {
-  background-image: url(../images/logo.svg);
-  width: 174px;
-  height: 44px;
+  background: url(../images/logo.svg) no-repeat;
+  background-size: contain;
 }
 
 .search-input {
@@ -132,6 +133,7 @@ body header {
   font-weight: 500;
   line-height: 19px;
   color: #53565A;
+  outline: none;
 }
 .search-input::placeholder {
   opacity: 0.3;
@@ -161,7 +163,6 @@ body header {
   cursor: pointer;
 }
 .tab-list li:focus-visible {
-  background-color: rgba(47, 128, 237, 0.1);
   outline: 1px solid rgba(47, 128, 237, 0.5);
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
 }
@@ -182,12 +183,12 @@ body header {
 .tab:hover {
   color: rgba(83, 86, 90, 0.7);
 }
-.tab--active {
-  opacity: 1;
-}
 
-.line--active {
+.tab--active {
   border-top: 4px solid #2F80ED;
+}
+.tab--active .tab {
+  opacity: 1;
 }
 
 .main {
@@ -293,60 +294,72 @@ body header {
   display: none;
 }
 
-.todo-item {
+.todo-list li.todo-item {
   cursor: pointer;
   position: relative;
   padding: 16px 12px 13px 23px;
   width: 100%;
-  height: 109px;
+  min-height: 109px;
   background: #FFFFFF;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   position: relative;
 }
-.todo-item:hover {
+.todo-list li.todo-item:hover {
   border-radius: 4px;
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
   border: 1px solid rgba(47, 128, 237, 0.75);
   transition: box-shadow 0.45s 0.05s ease-in-out;
 }
-.todo-item:focus {
+.todo-list li.todo-item:focus {
   outline: none;
   box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
   border: 1px solid rgba(47, 128, 237, 0.75);
 }
-.todo-item:hover .important-button, .todo-item:hover .bin-button {
+.todo-list li.todo-item:focus-within .important-button, .todo-list li.todo-item:focus-within .bin-button {
   display: block;
 }
-.todo-item:focus-within .important-button, .todo-item:focus-within .bin-button {
-  display: block;
-}
-.todo-item .important-button {
+.todo-list li.todo-item .important-button {
   position: absolute;
   right: 73px;
   top: 11px;
 }
-.todo-item.todo-task--important .important-button {
+.todo-list li.todo-item.todo-task--important .important-button {
   background: #bdbdbd;
 }
-.todo-item.todo-task--important .important-button:before {
+.todo-list li.todo-item.todo-task--important .important-button:before {
   content: "NOT IMPORTANT";
 }
-.todo-item .bin-button {
+.todo-list li.todo-item .bin-button {
   position: absolute;
   top: 11px;
   right: 12px;
 }
-.todo-item.todo-task--done p {
+.todo-list li.todo-item.todo-task--done p {
   text-decoration-line: line-through;
 }
-.todo-item.todo-task--done .important-button {
+.todo-list li.todo-item.todo-task--done .important-button {
   display: none;
+}
+
+/*если отсутствует/присутствует  тачскрин:*/
+.can-hover .todo-item .important-button, .can-hover .todo-item .bin-button {
+  display: none;
+}
+.can-hover .todo-item:hover .important-button, .can-hover .todo-item:hover .bin-button {
+  display: block;
+}
+
+.todo-item .important-button,
+.todo-item .bin-button {
+  display: block;
 }
 
 .todo-task {
   display: inline-block;
   max-width: 455px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .todo-task--important {
@@ -370,7 +383,6 @@ body header {
   letter-spacing: 0.75px;
   color: #FFFFFF;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-  display: none;
   cursor: pointer;
   outline: none;
 }
@@ -394,7 +406,6 @@ body header {
   height: 40px;
   border: 0;
   border-radius: 50%;
-  display: none;
   cursor: pointer;
   outline: none;
 }
@@ -406,6 +417,18 @@ body header {
 }
 
 @media screen and (max-width: 768px) {
+  .main {
+    margin: 0;
+  }
+
+  .content-wrapper {
+    background-size: 100%;
+  }
+
+  .header nav {
+    margin-left: 0;
+  }
+
   .todo-item .important-button {
     top: auto;
     bottom: 11px;
@@ -416,16 +439,14 @@ body header {
   }
 }
 @media screen and (max-width: 500px) {
-  .content-wrapper {
-    background-size: 100%;
-  }
-
   .search-wrapper {
     flex-direction: column;
   }
   .search-wrapper .logo {
     margin-right: 0;
     margin-bottom: 20px;
+    width: 139.2px;
+    height: 35.2px;
   }
   .search-wrapper form {
     width: 100%;

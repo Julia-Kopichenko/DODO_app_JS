@@ -169,18 +169,15 @@ document.querySelector('.tab-list').addEventListener('click',function(event) {
   let liCollection = element.closest('.tab-list').children;
  // перебираем элементы списка (li) и удаляем классы
   for (let i = 0; i < liCollection.length; i++) {
-    liCollection[i].classList.remove('line--active');
-    liCollection[i].children[0].classList.remove('tab--active');
+    liCollection[i].classList.remove('tab--active');
   }
 	// если объект, который был инициатором события имеет id (т.е. является li), то
 	// самой li добавляем класс line--active , а ее дочернему элементу (кнопке) - класс tab--active
 	// иначе - если наоборот объект-инициатор кнопка (ее родитель емеет id)
   if (element.getAttribute('id')) {
-    element.classList.add('line--active');
-    element.children[0].classList.add('tab--active');
-  } else if (parentElement.getAttribute('id')) {
-    parentElement.classList.add('line--active');
     element.classList.add('tab--active');
+  } else if (parentElement.getAttribute('id')) {
+    parentElement.classList.add('tab--active');
   }
 });
 
@@ -207,7 +204,6 @@ document.getElementById('done').addEventListener('click', function() {
   todo.classList.remove('todo-list--active');
   todo.classList.remove('todo-list--all');
 });
-console.log(todoList);
 
 //! функция поиска
 function searchTasks() {
@@ -234,3 +230,17 @@ searchInput.addEventListener('keydown', function (event) {
 // чтобы сразу фильтровало
 searchInput.addEventListener("input", searchTasks);
 
+//! проверка на тачскрин/ 
+// если есть тачскрин, то разрешаем/запрещаем hover
+// для браузеров IE10 делам лоп проверку
+
+function checkTouch() {
+	if (document.body.classList.contains('can-hover')) {
+		document.body.classList.remove('can-hover');
+	}
+
+	if (!(navigator.maxTouchPoints > 0) && !(navigator.msMaxTouchPoints > 0)) {
+		document.body.classList.add('can-hover');
+	}
+}
+checkTouch();
