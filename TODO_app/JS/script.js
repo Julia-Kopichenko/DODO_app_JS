@@ -34,7 +34,8 @@ function addNewTask() {
 		important: false,
 	};
 	// обращается к созданному массиву и  внего с пом.метода push добавляем новое дело (объект newTodo)
-	todoList.push(newTodo);
+	// todoList.push(newTodo);
+	todoList.unshift(newTodo);
 
 	//  вызываем функции displayTasks каждый раз, когда нажимаем кнопку
 	displayTasks();
