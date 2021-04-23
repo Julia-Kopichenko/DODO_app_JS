@@ -250,36 +250,15 @@ body {
 		box-shadow: 0px 2px 6px rgb(0 0 0 / 75%);
 	}	
 }
-.todo-list {    /*ul - список задач*/
+.todo-list {
+	    /*ul - список задач*/
 	& .todo-item {
 		margin-bottom: 17px;
 	}
-}
-/*на вкладке ALL все задачи (todo-item) отображаются*/
-.todo-list--all .todo-item {
-	display: block;
-}
-/*на вкладке active отображаются все задачи (todo-item), кроме тех, у кого класс todo-task--done */
-.todo-list--active .todo-item {	
-	&:not(.todo-task--done) {
-		display: block;
-	}
-	&.todo-task--done {
-		display: none;
+	& .button-wrapper {
+		margin-left: 21px;
 	}
 }
-.todo-list--done {
-	padding-top: 37px	;
-}
-.todo-list--done .todo-item {
-	&.todo-task--done {
-		display: block;
-	}
-	&:not(.todo-task--done) {
-		display: none;
-	}
-}
-//li
 .todo-list li.todo-item {
 	cursor: pointer; 
 	display: flex;
@@ -306,9 +285,6 @@ body {
 	&:focus-within .bin-button {
 		display: block;
 	}
-	& .button-wrapper {
-		margin-left: 21px;
-	}
 	&.todo-task--important .important-button{
 		background: #bdbdbd;
 		&:before {
@@ -322,6 +298,32 @@ body {
 		display: none;
 	}
 }
+/*на вкладке ALL все задачи (todo-item) отображаются*/
+.todo-list--all .todo-item {
+	display: block;
+}
+/*на вкладке active отображаются все задачи (todo-item), кроме тех, у кого класс todo-task--done */
+.todo-list--active .todo-item {	
+	&:not(.todo-task--done) {
+		display: flex;
+	}
+	&.todo-task--done {
+		display: none;
+	}
+}
+.todo-list--done {
+	padding-top: 37px	;
+}
+.todo-list--done .todo-item {
+	&.todo-task--done {
+		display: flex;
+	}
+	&:not(.todo-task--done) {
+		display: none;
+	}
+}
+//li
+
 
 /*если отсутствует/присутствует  тачскрин:*/
 .can-hover .todo-item {
@@ -413,7 +415,12 @@ body {
 	.content-wrapper {
 		background-size: 100%;
 	}
-	.todo-list li.todo-item .button-wrapper {
+	.todo-list {   
+		& .button-wrapper {
+			margin-left: 0;
+		}
+	}
+	.button-wrapper {
 		align-self: flex-end;
 	}
 	.todo-item {
