@@ -3,6 +3,10 @@ const addButton = document.querySelector('.add-button'); // кнопка ADD
 const addWrapper = document.querySelector('.add-wrapper'); // секция с полем ввода и кнокпой ввода
 let todo = document.querySelector('.todo-list'); //список дел (ul)
 const searchInput = document.querySelector('.search-input'); // поле поиска
+const tabList = document.querySelector('.tab-list'); // родитель вкладок
+const tabAll = document.getElementById('all'); // вкладка All
+const tabActive = document.getElementById('active'); // вкладка Active
+const tabDone = document.getElementById('done'); // вкладка Done
 
 // создадим пустой массив, в который будем записывать кждое новое дело (newTodo)
 let todoList = [];
@@ -45,20 +49,19 @@ function addNewTask() {
 	addAllListeners();
 }
 //!  пишем обработчик события при нажатии на кнопку ADD
-// обращаемся к кнопке и вешаем метод, который б-т отстеживать клик по кнопке
 addButton.addEventListener('click', function () {
 	addNewTask()
 });
-//!  пишем обработчик события при нажатии на кнопку Enter в поле ввода задачи
-addInput.addEventListener('keydown', function (event) {
-	if (event.keyCode == 13 && !event.shiftKey) { // исключаем срабатывае=ние Enter при нажатом shift
+//!  пишем обработчик события при нажатии на кнопку Enter в поле ввода задачи ()
+// addInput.addEventListener('keydown', function (event) {
+// 	if (event.keyCode == 13 && !event.shiftKey) { // исключаем срабатывае=ние Enter при нажатом shift
 		
-		addNewTask();
-		// event.preventDefault() сообщает, что если событие не обрабатывается явно,
-		// его действие по умолчанию не должно выполняться так, как обычно
-		event.preventDefault();
-	}
-});
+// 		addNewTask();
+// 		// event.preventDefault() сообщает, что если событие не обрабатывается явно,
+// 		// его действие по умолчанию не должно выполняться так, как обычно
+// 		event.preventDefault();
+// 	}
+// });
 
 //! Функция, которая будет выводить список дел на страницу
 function displayTasks() {
@@ -101,7 +104,7 @@ addAllListeners();
 //! функции для отметки задачи выполненной
 // по клику
 function makeTaskDoneByClick(item) {
-	item.addEventListener('click', function (event) {
+item.addEventListener('click', function (event) {
 		// Свойство target интерфейса Event является ссылкой на объект, который был инициатором события. 
 		let eventTarget = event.target;
 		// Свойство Node.parentElement только для чтения, возвращает родителя узла DOM Element
@@ -109,7 +112,7 @@ function makeTaskDoneByClick(item) {
 		
 		// условие, что при клике на кнопки important-button и корзина функция не срабатывала (не зачеркивала)
 		if (eventTarget.classList.contains('important-button')) return;
-    
+
 		if (eventTarget.classList.contains('bin-button')) return;
     
 		if (eventTarget.classList.contains('todo-item')) {
@@ -165,9 +168,18 @@ function deleteTask(item) {
   }); 
 }
 
-//! переключение табов стилизация
-document.querySelector('.tab-list').addEventListener('click',function(event) {
-  let element = event.target; 
+//! переключение табов (стилизация) мышкой или кнопкой enter 
+tabList.addEventListener('click',function(event) {
+	changeTabStyles(event);
+});
+tabList.addEventListener('keydown', function (event) {
+	if (event.keyCode == 13) {
+		changeTabStyles(event);
+	}
+});
+
+function changeTabStyles(event) {
+	let element = event.target; 
 	let parentElement = element.parentElement;
 	//Метод Element.closest() возвращает ближайший родительский элемент (или сам элемент),
   let liCollection = element.closest('.tab-list').children;
@@ -183,31 +195,55 @@ document.querySelector('.tab-list').addEventListener('click',function(event) {
   } else if (parentElement.getAttribute('id')) {
     parentElement.classList.add('tab--active');
   }
-});
+}
 
-//! по нажатию на закладку All отображаем все задачи
-document.getElementById('all').addEventListener('click', function() {
-  addWrapper.style.display = 'block'; // секция ввод задачи отображается
+//! по нажатию на закладку All мышкой или кнопкой enter отображаем все задачи
+tabAll.addEventListener('click', function() {
+	changeStylesAll();
+});
+tabAll.addEventListener('keydown', function (event) {
+	if (event.keyCode == 13) {
+		changeStylesAll();
+	}
+});
+function changeStylesAll() {
+	addWrapper.style.display = 'block'; // секция ввод задачи отображается
   todo.classList.add('todo-list--all');
   todo.classList.remove('todo-list--done');
   todo.classList.remove('todo-list--active');
-});
+}
 
-// ! по нажатию на закладку active отображаем все важные задачи
-document.getElementById('active').addEventListener('click', function() {
-  addWrapper.style.display = 'block'; // секция ввод задачи отображается
+// ! по нажатию на закладку Active мышкой или кнопкой enter  отображаем все важные задачи
+tabActive.addEventListener('click', function() {
+	changeStylesActive();
+});
+tabActive.addEventListener('keydown', function (event) {
+	if (event.keyCode == 13) {
+		changeStylesActive();
+	}
+});
+function changeStylesActive() {
+	addWrapper.style.display = 'block'; // секция ввод задачи отображается
   todo.classList.add('todo-list--active');
   todo.classList.remove('todo-list--all');
   todo.classList.remove('todo-list--done');
-});
+}
 
-//! по нажатию на закладку done отображаем все выполненные задачи
-document.getElementById('done').addEventListener('click', function() {
-  addWrapper.style.display = 'none'; // секция ввода задачи не отображается
-  todo.classList.add('todo-list--done');
-  todo.classList.remove('todo-list--active');
-  todo.classList.remove('todo-list--all');
+//! по нажатию на закладку Done мышкой или кнопкой enter  отображаем все выполненные задачи
+tabDone.addEventListener('click', function() {
+	changeStylesDone();
 });
+tabDone.addEventListener('keydown', function (event) {
+	if (event.keyCode == 13) {
+		changeStylesDone();
+	}
+});
+function changeStylesDone() {
+	addWrapper.style.display = 'none'; // секция ввода задачи не отображается
+	todo.classList.add('todo-list--done');
+	todo.classList.remove('todo-list--active');
+	todo.classList.remove('todo-list--all');
+}
 
 //! функция поиска
 function searchTasks() {
