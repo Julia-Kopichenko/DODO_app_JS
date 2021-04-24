@@ -1,0 +1,6 @@
+
+TODO_app/node_modules/*
+.eslintrc.json
+package.json
+package-lock.json
+.vscode
