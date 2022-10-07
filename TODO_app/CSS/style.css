@@ -1,0 +1,531 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-v20-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v20-latin-regular.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: local(""), url("../fonts/roboto-v20-latin-500.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: local(""), url("../fonts/roboto-v20-latin-700.woff2") format("woff2"), url("../fonts/roboto-v20-latin-700.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  src: local(""), url("../fonts/roboto-v20-latin-900.woff2") format("woff2"), url("../fonts/roboto-v20-latin-900.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+@font-face {
+  font-family: "SalesforceSans-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/SalesforceSans-Regular.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500.woff") format("woff");
+}
+/* Подключение box-sizing border-box для правильного расчета разметки */
+html {
+  box-sizing: border-box;
+}
+
+/*наследует значения родителя*/
+/*заставляем box-sizing наследоваться, так как по умолчанию before, after не наследуется*/
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #53565A;
+}
+body header {
+  margin-bottom: 12px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+}
+
+.content-wrapper {
+  display: block;
+  max-width: 1440px;
+  min-width: 320px;
+  min-height: 1024px;
+  padding: 20px;
+  margin: 0 auto;
+  background: url(../images/main_background.png) no-repeat right 6px top 218px;
+}
+
+.header {
+  max-width: 784px;
+  min-width: 280px;
+}
+.header nav {
+  border-top: 1px solid #E2E2E2;
+  margin-left: 26px;
+  margin-bottom: 12px;
+}
+.header .search-wrapper {
+  margin-bottom: 31px;
+}
+.header form {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.search-wrapper {
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.search-wrapper .logo {
+  margin-right: 20px;
+  width: 174px;
+  height: 44px;
+}
+
+.logo {
+  background: url(../images/logo.svg) no-repeat;
+  background-size: contain;
+}
+
+.search-input {
+  width: 100%;
+  height: 40px;
+  padding: 9px 10px 10px 40px;
+  background: url(../images/Search.svg) no-repeat #F6F6F6;
+  background-position: left 15px top 14px;
+  border: 1px solid #E2E2E2;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #53565A;
+  outline: none;
+}
+.search-input::placeholder {
+  opacity: 0.3;
+}
+.search-input:hover {
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  border: 1px solid rgba(47, 128, 237, 0.75);
+  -webkit-transition: -webkit-box-shadow 0.45s 0.05s ease-in-out;
+  -o-transition: box-shadow 0.45s 0.05s ease-in-out;
+  transition: box-shadow 0.45s 0.05s ease-in-out;
+}
+.search-input:focus-visible {
+  outline: 1px solid rgba(47, 128, 237, 0.5);
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+}
+
+.tab-list {
+  max-width: 525px;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.tab-list .tab {
+  margin-top: 18px;
+}
+.tab-list .tab--active .tab {
+  margin-top: 14px;
+}
+.tab-list li {
+  width: 175px;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+}
+.tab-list li:focus-visible {
+  outline: 1px solid rgba(47, 128, 237, 0.5);
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+}
+
+.tab {
+  display: block;
+  padding: 5px;
+  text-align: center;
+  height: 30px;
+  font-weight: 900;
+  color: #53565A;
+  opacity: 0.5;
+  border: 0;
+  text-decoration: none;
+  outline: none;
+  background-color: #FFFFFF;
+}
+.tab:hover {
+  color: rgba(83, 86, 90, 0.7);
+}
+
+.tab--active {
+  border-top: 4px solid #2F80ED;
+}
+.tab--active .tab {
+  opacity: 1;
+}
+
+.main {
+  max-width: 763px;
+  min-width: 280px;
+  margin: 0 24px 0;
+}
+
+.add-wrapper {
+  min-height: 37px;
+}
+.add-wrapper .add-label {
+  margin-bottom: 4px;
+}
+.add-wrapper .add-input {
+  margin-bottom: 11px;
+}
+.add-wrapper .add-button {
+  margin-left: auto;
+  margin-bottom: 23px;
+}
+
+.add-label {
+  font-family: "SalesforceSans-Regular";
+  font-size: 12px;
+  line-height: 15px;
+  color: #706E6B;
+}
+
+.add-input {
+  width: 100%;
+  height: 90px;
+  padding: 16px 12px 13px 23px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #DDDBDA;
+  border-radius: 4px;
+  outline: none;
+  overflow: auto;
+  vertical-align: top;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #53565A;
+}
+.add-input:hover {
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  border: 1px solid rgba(47, 128, 237, 0.75);
+  -webkit-transition: -webkit-box-shadow 0.45s 0.05s ease-in-out;
+  -o-transition: box-shadow 0.45s 0.05s ease-in-out;
+  transition: box-shadow 0.45s 0.05s ease-in-out;
+}
+.add-input:focus-visible {
+  border: 1px solid rgba(47, 128, 237, 0.75);
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+}
+
+.add-button {
+  width: 191px;
+  height: 36px;
+  padding: 10px;
+  background-color: #2F80ED;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+  display: block;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
+.add-button:hover {
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+}
+.add-button:focus-visible {
+  -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
+}
+.todo-list .todo-item {
+  margin-bottom: 17px;
+}
+.todo-list .button-wrapper {
+  margin-left: 21px;
+}
+
+.todo-item {
+  font-weight: normal;
+  cursor: pointer;
+  background: #FFFFFF;
+  padding: 16px 12px 13px 23px;
+  width: 100%;
+  min-height: 109px;
+  -webkit-box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  position: relative;
+}
+
+.todo-list li.todo-item {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  display: flex;
+  justify-content: space-between;
+}
+.todo-list li.todo-item:hover {
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  border: 1px solid rgba(47, 128, 237, 0.75);
+  -webkit-transition: -webkit-box-shadow 0.45s 0.05s ease-in-out;
+  transition: box-shadow 0.45s 0.05s ease-in-out;
+}
+.todo-list li.todo-item:focus {
+  outline: none;
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  border: 1px solid rgba(47, 128, 237, 0.75);
+}
+.todo-list li.todo-item:focus-within .important-button, .todo-list li.todo-item:focus-within .bin-button {
+  display: block;
+}
+.todo-list li.todo-item.todo-task--important .important-button {
+  background: #bdbdbd;
+}
+.todo-list li.todo-item.todo-task--important .important-button:before {
+  content: "NOT IMPORTANT";
+}
+.todo-list li.todo-item.todo-task--done p {
+  -webkit-text-decoration-line: line-through;
+  text-decoration-line: line-through;
+}
+.todo-list li.todo-item.todo-task--done .important-button {
+  display: none;
+}
+
+/*на вкладке ALL все задачи (todo-item) отображаются*/
+.todo-list--all .todo-item {
+  display: block;
+}
+
+/*на вкладке active отображаются все задачи (todo-item), кроме тех, у кого класс todo-task--done */
+.todo-list--active .todo-item:not(.todo-task--done) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.todo-list--active .todo-item.todo-task--done {
+  display: none;
+}
+
+.todo-list--done {
+  padding-top: 37px;
+}
+
+.todo-list--done .todo-item.todo-task--done {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.todo-list--done .todo-item:not(.todo-task--done) {
+  display: none;
+}
+
+/*если отсутствует/присутствует  тачскрин:*/
+.can-hover .todo-item .important-button, .can-hover .todo-item .bin-button {
+  display: none;
+}
+.can-hover .todo-item:hover .important-button, .can-hover .todo-item:hover .bin-button {
+  display: block;
+}
+
+.todo-item .important-button,
+.todo-item .bin-button {
+  display: block;
+}
+
+.todo-task {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: inline-block;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.todo-task--important {
+  font-weight: bold;
+}
+.todo-task--important .todo-task:before {
+  content: url(../images/star_border.svg);
+  margin-right: 10px;
+}
+
+.button-wrapper {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 244px;
+}
+.button-wrapper .important-button {
+  margin-right: 21px;
+}
+
+.important-button {
+  width: 183px;
+  height: 36px;
+  padding: 10px 16px;
+  border: 0;
+  font-weight: 500px;
+  text-align: center;
+  border-radius: 20px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  color: #FFFFFF;
+  -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  outline: none;
+}
+.important-button:hover {
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+}
+.important-button:focus-visible {
+  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
+}
+
+.important-button--not-active {
+  background: #27AE60;
+}
+.important-button--not-active:before {
+  content: "MARK IMPORTANT";
+}
+
+.bin-button {
+  background: url(../images/Delete.svg) no-repeat;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+.bin-button:hover {
+  -webkit-box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+  box-shadow: 0px 6px 20px rgba(47, 128, 237, 0.75);
+}
+.bin-button:focus-visible {
+  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    margin: 0;
+  }
+
+  .content-wrapper {
+    background-size: 100%;
+  }
+
+  .todo-list .button-wrapper {
+    margin-left: 0;
+  }
+
+  .button-wrapper {
+    align-self: flex-end;
+  }
+
+  .todo-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .todo-task {
+    margin-bottom: 5px;
+  }
+
+  .header nav {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .search-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .search-wrapper .logo {
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 139.2px;
+    height: 35.2px;
+  }
+  .search-wrapper form {
+    width: 100%;
+  }
+
+  .header .tab-list {
+    margin-left: 0;
+  }
+
+  .tab-list {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./CSS/normalize.css">
+		<link rel="stylesheet" href="./CSS/style.css">
+		<title>TODO list</title>
+	</head>
+
+	<body>
+		<h1 class="visually-hidden">Список дел</h1>
+		<div class="content-wrapper">
+			<header class="header">
+				<div class="search-wrapper">
+					<div class="logo"></div>
+					<form>
+						<input type="search" class="search-input" placeholder="Search task for to do" tabindex="0">
+					</form>
+				</div>
+				<nav>
+					<ul class="tab-list">
+						<li id="all" class="tab--active" tabindex="0">
+							<a class="tab" tabindex="-1" href="#">All</a>
+						</li>
+						<li id="active" tabindex="0">
+							<a class="tab" tabindex="-1" href="#">Active</a>
+						</li>
+						<li id="done" tabindex="0">
+							<a class="tab" tabindex="-1" href="#">Done</a>
+						</li>
+					</ul>	
+				</nav>
+			</header>
+			<main class="main">
+				<section class="add-wrapper">
+					<h2 class="visually-hidden">Введите новую задачу</h2>
+					<form>
+						<label class="add-label">New Task</label>
+						<textarea class="add-input"></textarea>
+						<button class="add-button">ADD</button>
+					</form>
+				</section>
+				<section>
+					<h3 class="visually-hidden">Список ваших задач</h3>
+					<ul class="todo-list">
+						<!-- наполняем списком через js -->
+					</ul>
+				</section>
+			</main>
+		</div>
+		<script src="./JS/script.js"></script>
+	</body>
+</html>
